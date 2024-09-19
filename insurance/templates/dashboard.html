@@ -1,0 +1,158 @@
+{% extends 'header.html' %}
+
+{% block content %}
+<style type="text/css">
+    .card {
+        background-color: #4458BE !important;
+        border: none;
+        border-radius: 12px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-title {
+        font-size: 18px;
+        margin-bottom: 20px;
+        font-weight: 500;
+    }
+
+    .card-icon {
+        font-size: 35px;
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .card-text {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .icon-text {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .container {
+        padding-top: 50px;
+    }
+
+    .row {
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <!-- Total Registered Users Card -->
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="card text-white h-100">
+                <div class="card-body">
+                    <p class="card-title">Total Registered Users</p>
+                    <div class="icon-text">
+                        <i class="fas fa-users card-icon"></i>
+                        <p class="card-text">{{total_customer}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Listed Policies Card -->
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="card text-white h-100">
+                <div class="card-body">
+                    <p class="card-title">Total Listed Policies</p>
+                    <div class="icon-text">
+                        <i class="fas fa-file-alt card-icon"></i>
+                        <p class="card-text">{{total_policy}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Listed Categories Card -->
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="card text-white h-100">
+                <div class="card-body">
+                    <p class="card-title">Listed Categories</p>
+                    <div class="icon-text">
+                        <i class="fas fa-list-alt card-icon"></i>
+                        <p class="card-text">{{total_category}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Questions Card -->
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="card text-white h-100">
+                <div class="card-body">
+                    <p class="card-title">Total Questions</p>
+                    <div class="icon-text">
+                        <i class="fas fa-question-circle card-icon"></i>
+                        <p class="card-text">{{total_question}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Total Applied Policy Holders Card -->
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="card text-white h-100">
+                <div class="card-body">
+                    <p class="card-title">Total Applied Policy Holders</p>
+                    <div class="icon-text">
+                        <i class="fas fa-users card-icon"></i>
+                        <p class="card-text">{{total_applied}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Approved Policy Holders Card -->
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="card text-white h-100">
+                <div class="card-body">
+                    <p class="card-title">Approved Policy Holders</p>
+                    <div class="icon-text">
+                        <i class="fas fa-check-circle card-icon"></i>
+                        <p class="card-text">{{approved_policy}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Disapproved Policy Holders Card -->
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="card text-white h-100">
+                <div class="card-body">
+                    <p class="card-title">Disapproved Policy Holders</p>
+                    <div class="icon-text">
+                        <i class="fas fa-times-circle card-icon"></i>
+                        <p class="card-text">{{reject_policy}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pending Policy Approval Card -->
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="card text-white h-100">
+                <div class="card-body">
+                    <p class="card-title">Pending Policy Approvals</p>
+                    <div class="icon-text">
+                        <i class="fas fa-hourglass-half card-icon"></i>
+                        <p class="card-text">{{pending_policy}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

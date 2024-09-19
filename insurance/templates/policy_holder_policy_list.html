@@ -1,0 +1,62 @@
+{% extends 'header.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-8">
+            <h2 class="text-center">Manage Policies</h2>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <a href="{% url 'create_policy_holder' %}" class="btn btn-primary">Create New Policy Holder</a>
+        </div>
+        <div class="col-md-6 text-right">
+            <a href="{% url 'register' %}" class="btn btn-success">Add User</a>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Customer Name</th>
+                                <th>Policy Name</th>
+                                <th>Purchase Date</th>          
+                                <th>Payment Status</th>
+                                <th>Approval Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if policies %}
+                                {% for policy in policies %}
+                                    <tr>
+                                        <td>{{ policy.policy_holder }}</td>
+                                        <td>{{ policy.policy}}</td>
+                                        <td>{{ policy.purchase_date }}</td>
+                                        <td>{{ policy.payment_status }}</td>
+                                        <td>{{ policy.approval_status }}</td>
+                                        <td>
+                                            <a href="{% url 'approve_policy' policy_id=policy.id%}" class="btn btn-warning btn-sm me-2">Approve</a>
+                                            <a href="{% url 'reject_policy' policy_id=policy.id%}" class="btn btn-danger btn-sm">Reject</a>
+                                        </td>
+                                    </tr>
+                                {% empty %}
+                                    <tr>
+                                        <td colspan="6" class="text-center">No policies found.</td>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

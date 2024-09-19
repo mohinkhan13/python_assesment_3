@@ -1,0 +1,52 @@
+{% extends 'header.html' %}
+{% block content %}
+<!-- create_policy.html -->
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-lg">
+                <div class="card-header bg-white">
+                    <h3 class="text-center">Create Policy</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group mb-3">
+                            <label for="policy_name" class="form-label">Policy Name</label>
+                            <input type="text" name="policy_name" class="form-control" placeholder="Enter policy name" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="category" class="form-label">Category</label>
+                            <select name="category" class="form-control" required>
+                                <!-- Dynamically populate categories -->
+                                {% for category in categories %}
+                                    <option value="{{ category.id }}">{{ category.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea name="description" class="form-control" rows="4" placeholder="Enter policy description" required></textarea>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="start_date" class="form-label">Start Date</label>
+                            <input type="date" name="start_date" class="form-control" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="end_date" class="form-label">End Date</label>
+                            <input type="date" name="end_date" class="form-control" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="premium_amount" class="form-label">Premium Amount</label>
+                            <input type="text" name="premium_amount" class="form-control" placeholder="Enter premium amount" required>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success btn-block">Create Policy</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
